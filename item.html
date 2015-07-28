@@ -5,7 +5,21 @@
     <title></title>
 </head>
 <body>
+<h2>Your seat reservations</h2>
 
+<table>
+    <thead><tr>
+        <th>Passenger name</th><th>Meal</th><th>Surcharge</th><th></th>
+    </tr></thead>
+    <!-- Todo: Generate table body -->
+    <tbody data-bind="foreach: seats">
+    <td data-bind="text: name"></td>
+    <td data-bind="text: meal().mealName"></td>
+    <td data-bind="text: meal().price"></td>
+    </tbody>
+</table>
+
+<button data-bind="click: addSeat">Reserve another seat</button>
 
 <script src="js/bower_components/knockout/dist/knockout.js"></script>
 <script src="js/item.js"></script>
