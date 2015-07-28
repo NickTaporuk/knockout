@@ -6,6 +6,11 @@
 </head>
 <body>
 
+<div class="content">
+    <p>First name: <strong data-bind="text: firstName"></strong></p>
+    <p>Last name: <strong data-bind="text: lastName"></strong></p>
+    <p>Full name: <strong aria-live="polite" data-bind="text: fullName"></strong></p>
+</div>
 
 <script src="js/bower_components/knockout/dist/knockout.js"></script>
 <script src="js/binding.js"></script>
