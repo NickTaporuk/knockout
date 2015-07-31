@@ -25,7 +25,7 @@ Knockout.js
         <label class="col-sm-2 control-label" for="name">Имя:</label>
 
         <div class="col-sm-10">
-            <input class="form-control" type="text" id="name"/>
+            <input class="form-control" type="text" id="name" data-bind="value:firstName" />
         </div>
     </div>
 
@@ -33,7 +33,7 @@ Knockout.js
         <label class="col-sm-2 control-label" for="last-name">Фамилия :</label>
 
         <div class="col-sm-10">
-            <input class="form-control" type="text" id="last-name"/>
+            <input class="form-control" type="text" id="last-name" data-bind="value:lastName" />
         </div>
     </div>
 
@@ -42,12 +42,46 @@ Knockout.js
 
         <div class="col-sm-10">
             <div class="col-sm-6 n-pad_1">
-                <input class="form-control" type="text" name="" id="age"/>
+                <input class="form-control" type="text" name="" id="age" data-bind="value:age"/>
+            </div>
+
+            <div class="col-sm-6 n-pad_r">
+                <label class="col-sm-4 control-label label-mini" for="sex">Пол:</label>
+
+                <div class="col-sm-8 n-pad_r">
+                    <select class="form-control" id="sex" data-bind="options:sexOptions,optionsCaption:'Не выбрано',value:sex,valueAllowUnset:true" >
+
+                    </select>
+                </div>
             </div>
         </div>
+
+    </div>
+    <label class="pad_add" >Доступ к администрированию<input type="checkbox" data-bind="checked:isAdmin"/></label>
+
+    <div class="form-group pad_add" data-bind="visible:isAdmin">
+        <label >Администратор статей<input value="Администратор статей" type="radio" name="optionsRadios" data-bind="checked:adminName"/></label>
+        <label >Администратор разделов<input value="Администратор разделов" type="radio" name="optionsRadios" data-bind="checked:adminName"/></label>
+        <label >Супер администратор<input value="Супер администратор" type="radio" name="optionsRadios" data-bind="checked:adminName"/></label>
     </div>
 
+
+    <div class="form-group pad_add">
+        <button type="submit" class="btn btn-default">Сохранить</button>
+    </div>
 </form>
+
+<div class="col-md-6">
+    <h3>Новый пользователь:</h3>
+    <ul>
+        <li data-bind="text:fullName">Николай Куропаткин</li>
+        <li data-bind="text:age">28 лет</li>
+        <span></span>
+        <li data-bind="text:sex">Мужской</li>
+        <li data-bind="visible:isAdmin">Администратор(<span data-bind="text:adminName"></span>)</li>
+        <button class="btn btn-default" data-bind="visible:notEmpty,click:reset">Очистить информацию</button>
+    </ul>
+</div>
 
 <script src="/js/bower_components/knockout/dist/knockout.js"></script>
 <script src="/frontend/js/loft.js"></script>
