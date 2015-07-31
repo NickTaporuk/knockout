@@ -3,9 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Knockout.js</title>
-    <link rel="stylesheet" href="/frontend/css/loft.css">
+    <link rel="stylesheet" type="text/css" href="/frontend/css/loft.css">
 </head>
 <body>
+Knockout.js
+<p>FirstName:<span data-bind="text:FirstName"></span></p>
+
+<p>LastName:<span data-bind="text:LastName"></span></p>
+
+<p><input type="text"  data-bind="value:FirstName"></p>
+<p><input type="text"  data-bind="value:LastName"></p>
 <script src="/js/bower_components/knockout/dist/knockout.js"></script>
 <script src="/frontend/js/loft.js"></script>
 </body>
