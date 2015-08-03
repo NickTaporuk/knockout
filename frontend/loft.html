@@ -7,24 +7,72 @@
     <link rel="stylesheet" type="text/css" href="../js/bower_components/bootstrap/dist/css/bootstrap.min.css">
 </head>
 <body>
-Knockout.js
-<p>FirstName:<span data-bind="text:FirstName"></span></p>
 
-<p>LastName:<span data-bind="text:LastName"></span></p>
-
-<p><input type="text"  data-bind="value:FirstName"></p>
-<p><input type="text"  data-bind="value:LastName"></p>
-
-<form action="" class="col-md-6">
+<form action="" class="col-md-6" data-bind="submit:save">
     <h3>Создание нового пользователя</h3>
-    <!--.form-group>label.col-sm-2.control-label{Имя}+.col-sm-10>inp.form-control-->
-    <div class="form-group">
-        <label for="name" class="col-sm-2 control-label">Имя:</label>
 
-        <div class="col-sm-10"><input type="text" name="" id="" class="form-control"/></div>
+    <!--.form-group>label.col-sm-2.control-label{}+.col-sm-10>inp.form-control#last-name-->
+    <div class="form-group">
+        <label class="col-sm-2 control-label" for="name">Имя:</label>
+
+        <div class="col-sm-10">
+            <input class="form-control" type="text" id="name" data-bind="value:firstName" />
+        </div>
     </div>
 
+    <div class="form-group">
+        <label class="col-sm-2 control-label" for="last-name">Фамилия :</label>
+
+        <div class="col-sm-10">
+            <input class="form-control" type="text" id="last-name" data-bind="value:lastName" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label" for="age">Возраст :</label>
+
+        <div class="col-sm-10">
+            <div class="col-sm-6 n-pad_1">
+                <input class="form-control" type="text" name="" id="age" data-bind="value:age"/>
+            </div>
+
+            <div class="col-sm-6 n-pad_r">
+                <label class="col-sm-4 control-label label-mini" for="sex">Пол:</label>
+
+                <div class="col-sm-8 n-pad_r">
+                    <select class="form-control" id="sex" data-bind="options:sexOptions,optionsCaption:'Не выбрано',value:sex,valueAllowUnset:true" >
+
+                    </select>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <label class="pad_add" >Доступ к администрированию<input type="checkbox" data-bind="checked:isAdmin"/></label>
+
+    <div class="form-group pad_add" data-bind="visible:isAdmin">
+        <label >Администратор статей<input value="Администратор статей" type="radio" name="optionsRadios" data-bind="checked:adminName"/></label>
+        <label >Администратор разделов<input value="Администратор разделов" type="radio" name="optionsRadios" data-bind="checked:adminName"/></label>
+        <label >Супер администратор<input value="Супер администратор" type="radio" name="optionsRadios" data-bind="checked:adminName"/></label>
+    </div>
+
+
+    <div class="form-group pad_add">
+        <button type="submit" class="btn btn-default">Сохранить</button>
+    </div>
 </form>
+
+<div class="col-md-6">
+    <h3>Новый пользователь:</h3>
+    <ul>
+        <li data-bind="text:fullName">Николай Куропаткин</li>
+        <li data-bind="text:age">28 лет</li>
+        <span></span>
+        <li data-bind="text:sex">Мужской</li>
+        <li data-bind="visible:isAdmin">Администратор(<span data-bind="text:adminName"></span>)</li>
+        <button class="btn btn-default" data-bind="visible:notEmpty,click:reset">Очистить информацию</button>
+    </ul>
+</div>
 
 <script src="/js/bower_components/knockout/dist/knockout.js"></script>
 <script src="/frontend/js/loft.js"></script>
