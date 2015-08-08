@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+<ul data-bind="foreach: newsHeaders">
+    <li data-bind="text:$data"></li>
+</ul>
+
+<form action="#" data-bind="with:addNewsControl">
+    <label for="">Заголовок</label>
+    <input type="text" name="" id="newTitle" data-bind="value: newTitle"/><br/><br/>
+
+    <label for="">Текст</label>
+    <input type="text" name="" id="newText" data-bind="value: newText"/><br/><br/>
+
+    <label for="">Признак новизны</label>
+    <input type="checkbox" name="" id="newIsNew" data-bind="checked:newIsNew"/><br/><br/>
+
+    <button data-bind="click:addItem">Добавить</button><br/><br/>
+    <button data-bind="click:removeAll">Удалить всё</button>
+</form>
+
+
+
+<ul data-bind="template:{name:'news-template',foreach:news, as:'teaser'}">
+</ul>
+<!-- template -->
+<script type="text/html" id="news-template">
+
+    <li>
+        <!-- ko if: teaser.isNew -->
+        <span>New:</span>
+        <!-- /ko -->
+        <h3 data-bind="text:teaser.title"></h3>
+        <p data-bind="text:teaser.text"></p>
+        <a href="#" data-index="$index" data-bind="click:removeItem">Удалить</a>
+    </li>
+
+</script>
+<!-- end template-->
+<!-- -->
+<script src="/js/bower_components/knockout/dist/knockout.js"></script>
+<script src="/frontend/js/news.js"></script>
+
+<!-- -->
+</body>
+</html>
